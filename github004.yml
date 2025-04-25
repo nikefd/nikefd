@@ -1,0 +1,58 @@
+openapi: 3.0.1
+info:
+  title: GitHub MCP Server
+  description: Stream GitHub repos, issues and users via your MCP Server proxy.
+  version: 0.1.0
+servers:
+  - url: https://6msfk8mf.asse.devtunnels.ms:4000
+
+paths:
+  /repos:
+    get:
+      operationId: getRepos
+      summary: Get repositories
+      description: Fetch repositories for a given user.
+      parameters:
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: string
+          description: GitHub username (e.g. "nikefd")
+        - name: perPage
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Results per page
+      responses:
+        '200':
+          description: Repository list JSON
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /stream/repos:
+    get:
+      operationId: streamRepos
+      summary: Stream repositories (SSE)
+      description: Stream repositories for a user via Server-Sent Events.
+      parameters:
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: perPage
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: SSE stream of repository events
+          content:
+            text/event-stream:
+              schema:
+                type: object
