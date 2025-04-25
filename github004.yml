@@ -57,10 +57,10 @@ paths:
               schema:
                 type: object
 
-  /pulls/reviews:
+  /pulls/comments:
     get:
-      operationId: getPullRequestReviews
-      summary: Get pull request reviews
+      operationId: getPullRequestComments
+      summary: Get pull request Comments
       parameters:
         - name: owner
           in: query
