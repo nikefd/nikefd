@@ -4,7 +4,7 @@ info:
   description: Stream GitHub repos, issues and users via your MCP Server proxy.
   version: 0.1.0
 servers:
-  - url: https://zb2wz19t.asse.devtunnels.ms:4000
+  - url: https://6msfk8mf.asse.devtunnels.ms:4000
 
 paths:
   /repos:
@@ -54,5 +54,33 @@ paths:
           description: SSE stream of repository events
           content:
             text/event-stream:
+              schema:
+                type: object
+
+  /pulls/reviews:
+    get:
+      operationId: getPullRequestReviews
+      summary: Get pull request reviews
+      parameters:
+        - name: owner
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: repo
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: pullNumber
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Pull request review list JSON
+          content:
+            application/json:
               schema:
                 type: object
