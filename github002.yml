@@ -32,3 +32,27 @@ paths:
             application/json:
               schema:
                 type: object
+
+  /stream/repos:
+    get:
+      operationId: streamRepos
+      summary: Stream repositories (SSE)
+      description: Stream repositories for a user via Server-Sent Events.
+      parameters:
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: perPage
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: SSE stream of repository events
+          content:
+            text/event-stream:
+              schema:
+                type: object
