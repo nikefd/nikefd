@@ -4,7 +4,7 @@ info:
   description: Stream GitHub repos, issues and users via your MCP Server proxy.
   version: 0.1.0
 servers:
-  - url: https://6msfk8mf.asse.devtunnels.ms:4000
+  - url: https://zb2wz19t.asse.devtunnels.ms:4000
 
 paths:
   /repos:
