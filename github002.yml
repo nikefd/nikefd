@@ -32,10 +32,3 @@ paths:
             application/json:
               schema:
                 type: object
-                properties:
-                  total_count:
-                    type: integer
-                  items:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Repo'
